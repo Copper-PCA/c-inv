@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coconut-Based Technology Portal</title>
+    <style>
+        /* Essential layout */
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background-color: #ffffff; }
+        
+        /* The Loading Overlay */
+        #loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        /* High-Contrast Spinner */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4f46e5; /* Matching your theme color */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        p { font-family: sans-serif; color: #4b5563; margin-top: 15px; }
+
+        /* The App Container */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Loading Portal...</p>
+    </div>
+
+    <iframe 
+        id="appFrame"
+        src="https://script.google.com/macros/s/AKfycbwShAA0UOi2bFZWK3eSwpzO3lXEFUsfrWOhvRbT9syXAC7hhh3pI6VGFgL36WRa3O1R/exec" 
+        onload="hideLoader()">
+    </iframe>
+
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            // Fade out effect
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
